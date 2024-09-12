@@ -6,7 +6,7 @@ import beth from "../assets/beth.jpg";
 import knight from "../assets/knight.svg";
 import bethFull from "../assets/beth-full-darken.jpg";
 
-export default function Login() {
+export default function Login({url}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [invisible, setInvisible] = useState(true);
@@ -16,7 +16,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const body = { username, password };
-      const { data } = await axios.post("http://localhost:3000/login", body);
+      const { data } = await axios.post(`${url}/login`, body);
 
       Swal.fire({
         title: "Login Success!",

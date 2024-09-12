@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import beth from "../assets/beth.jpg";
 import knight from "../assets/knight.svg";
 
-export default function Register() {
+export default function Register({url}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ export default function Register() {
     e.preventDefault();
     try {
       const body = { username, password };
-      await axios.post("http://localhost:3000/register", body);
+      await axios.post(`${url}/register`, body);
       navigate("/login");
     } catch (error) {
       Swal.fire({
